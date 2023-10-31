@@ -1,0 +1,30 @@
+.menu-container {
+  display: flex;
+  justify-content: center;
+  background: black;
+
+}
+
+.menu {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 30%;
+  background: black;
+  color: white;
+}
+
+.menu-item{
+  padding: 15px 20px 15px 5px;
+  background: black;
+
+}
+
+a {
+  color:white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #f7f76e;
+}
