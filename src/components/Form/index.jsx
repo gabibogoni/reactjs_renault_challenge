@@ -3,8 +3,8 @@ import './styles.css';
 
 export const Form = () => {
   const [model, setModel] = useState('');
-  const [color, setColor] = useState('');
   const [value, setValue] = useState('');
+  const [color, setColor] = useState('');
   const [image, setImage] = useState('');
 
   const handleSubmitForm = (event) => {
@@ -12,16 +12,34 @@ export const Form = () => {
     console.log({ model, color, value, image });
   };
 
-  const armazenar = (chave, valor) => {
-    localStorage.setItem(chave, valor);
+  const armazenar = () => {
+    const lastIdLocalStorage = localStorage.getItem('lastId');
+
+    if (!lastIdLocalStorage) {
+      localStorage.setItem('lastId', 0);
+    }
+
+    const nextId = parseInt(localStorage.getItem('lastId')) + 1;
+
+    localStorage.setItem('lastId', nextId);
+
+    localStorage.setItem(
+      nextId,
+      JSON.stringify({
+        model: model,
+        value: value,
+        color: color,
+        image: image,
+      }),
+    );
+    clearForm();
   };
 
-  const consultar = (chave) => {
-    localStorage.getItem(chave);
-  };
-
-  const excluir = (chave) => {
-    localStorage.remoceItem(chave);
+  const clearForm = () => {
+    setModel('');
+    setValue('');
+    setColor('');
+    setImage('');
   };
 
   return (
@@ -72,7 +90,7 @@ export const Form = () => {
             <button
               className="register-button"
               type="submit"
-              onClick={() => armazenar('ls_model', model)}
+              onClick={() => armazenar()}
             >
               Cadastrar
             </button>

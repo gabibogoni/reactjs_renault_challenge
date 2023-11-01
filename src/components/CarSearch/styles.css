@@ -32,3 +32,14 @@
   font-weight: 600;
   margin-bottom: 2rem;
 }
+
+table,
+td {
+  border: 1px solid #333;
+}
+
+thead,
+tfoot {
+  background-color: #333;
+  color: #fff;
+}
